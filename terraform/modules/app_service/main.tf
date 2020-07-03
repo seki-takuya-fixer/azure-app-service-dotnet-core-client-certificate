@@ -18,10 +18,10 @@ resource "azurerm_app_service" "this" {
   app_service_plan_id     = azurerm_app_service_plan.this.id
   resource_group_name     = var.resource_group_name
   client_affinity_enabled = true
+  client_cert_enabled     = true
   https_only              = true
   site_config {
     always_on = true
-    # app_command_line          = var.app_command_line
     linux_fx_version          = "DOCKER|${var.container_image}"
     ftps_state                = "Disabled"
     http2_enabled             = true
